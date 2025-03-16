@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <style>
+        /* Styles */
+        /* Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 999;
+        }
+
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .cart {
+            position: relative;
+        }
+
+        .cart img {
+            width: 30px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            background-color: #fff;
+            width: 300px;
+            height: 100%;
+            transition: right 0.3s ease;
+            z-index: 998;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-left: 1px solid #ccc;
+        }
+
+        .cart-items ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-items ul li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #080404;
+        }
+
+        .cart-items ul li:first-child {
+            font-weight: bold;
+            border-bottom: none;
+        }
+
+        .thumbnails {
+            margin-top: 20px;
+            display: flex;
+        }
+
+        .thumbnail img {
+            width: 80px;
+            height: 80px; /* Menambahkan properti height agar ukuran thumbnail konsisten */
+            margin-right: 10px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+
+        .thumbnail img:hover {
+            border-color: #333;
+        }
+
+        .product-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-info {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .product-image {
+            flex: 1;
+        }
+
+        .product-image img {
+            width: 80%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .size-selection {
+            margin-top: 20px;
+        }
+
+        .size-selection label {
+            margin-right: 10px;
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .size-selection label:hover {
+            background-color: #ddd;
+        }
+
+        .size-selection input[type="radio"] {
+            display: none;
+        }
+
+        .size-selection input[type="radio"]:checked + label {
+            background-color: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #555;
+        }
+
+        .checkout-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .checkout-button button {
+            padding: 10px 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .checkout-button button:hover {
+            background-color: #45a049;
+        }
+
+        /* Quantity bar styles */
+        .quantity-bar {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .quantity-button {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 30px;
+            border: 1px solid #ccc;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        /* Comment section styles */
+        .comment-section {
+            margin-top: 20px;
+        }
+
+        .comment-section textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .comment-section button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .comment-section button:hover {
+            background-color: #555;
+        }
+
+        .comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .comment p {
+            margin-bottom: 5px;
+        }
+
+        /* Rating styles */
+        .rating {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .star {
+            font-size: 24px;
+            color: #cccccc;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="menuutama.html">Home</a>
+            <a href="shop.html">All Products</a>
+        </div>
+        <div class="cart" onclick="toggleCart()">
+            <img src="240_F_266717164_J8Fqw4OcXRkKtNwFyHD02zIEsxPI7qHH.jpg" alt="Cart">
+            <span>0</span>
+            <div class="cart-items">
+                <ul id="cartItemList">
+                    <!-- Cart items will be displayed here -->
+                </ul>
+                <div class="checkout-button">
+                    <button onclick="checkout()">Check Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-detail">
+        <div class="product-image">
+            <img src="seoulv2-hoodie-flatlay-front.webp" alt="Seoul V2 ">
+            <div class="thumbnails">
+                <div class="thumbnail" onclick="changeImage('seoulv2-hoodie-flatlay-back_1.webp')">
+                    <img src="seoulv2-hoodie-flatlay-back_1.webp" alt="Thumbnail 1">
+                </div>
+                <div class="thumbnail" onclick="changeImage('seoulv2-black-01.webp')">
+                    <img src="seoulv2-black-01.webp" alt="Thumbnail 2">
+                </div>
+                <div class="thumbnail" onclick="changeImage('seoulv2-hoodie-flatlay-front.webp')">
+                    <img src="seoulv2-hoodie-flatlay-front.webp" alt="Thumbnail 3">
+                </div>
+                
+            </div>
+        </div>
+        <div class="product-info">
+            <!-- Deskripsi produk baru -->
+            <h2>PRX Seoul Mission Hoodie 2024 Edition</h2>
+            <p>$89.99</p>
+            <p>Walk around with the confidence of a Radiant amongst Silvers.</p>
+            <p>Limited Edition, get yours before they’re Seoul-ed out</p>
+            <p>100% Cotton</p>
+            <p>Front pouch pocket</p>
+            <!-- Akhir dari deskripsi produk baru -->
+            <div class="size-selection">
+                <input type="radio" name="size" id="sizeS" value="S"><label for="sizeS">S</label>
+                <input type="radio" name="size" id="sizeM" value="M"><label for="sizeM">M</label>
+                <input type="radio" name="size" id="sizeL" value="L"><label for="sizeL">L</label>
+                <input type="radio" name="size" id="sizeXL" value="XL"><label for="sizeXL">XL</label>
+            </div>
+            <div class="quantity-bar">
+                <div class="quantity-button" onclick="decrement()">-</div>
+                <input class="quantity-input" type="text" value="1" readonly>
+                <div class="quantity-button" onclick="increment()">+</div>
+            </div>
+            <div class="button-container">
+                <button onclick="addToCart()">Add to Cart</button>
+            </div>
+            <div class="comment-section">
+                <textarea id="commentText" rows="4" placeholder="Leave a comment..."></textarea>
+                <button onclick="postComment()">Post Comment</button>
+            </div>
+            <div class="comments">
+                <h3>Comments</h3>
+                <div id="commentList">
+                    <!-- Comments will be displayed here -->
+                </div>
+            </div>
+            <div class="rating">
+                <span class="star" onclick="rateProduct(1)">★</span>
+                <span class="star" onclick="rateProduct(2)">★</span>
+                <span class="star" onclick="rateProduct(3)">★</span>
+                <span class="star" onclick="rateProduct(4)">★</span>
+                <span class="star" onclick="rateProduct(5)">★</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        // Function to toggle cart visibility
+        function toggleCart() {
+            var cartItems = document.querySelector('.cart-items');
+            if (cartItems.style.right === '0px') {
+                cartItems.style.right = '-400px';
+            } else {
+                var cartCount = parseInt(document.querySelector('.cart span').innerText);
+                if (cartCount > 0) {
+                    var cartItemsList = document.querySelector('.cart-items ul');
+                    cartItemsList.innerHTML = '';
+                    var productsInCart = document.querySelectorAll('.cart-items ul li');
+                    productsInCart.forEach(function(item) {
+                        var newItem = document.createElement('li');
+                        newItem.textContent = item.textContent;
+                        cartItemsList.appendChild(newItem);
+                    });
+                    cartItems.style.right = '0px';
+                } else {
+                    cartItems.style.right = '0px';
+                    cartItemsList.innerHTML = '<li>No items in cart</li>';
+                }
+            }
+        }
+
+        // Function to add product to cart
+        function addToCart() {
+            var productName = document.querySelector('.product-info h2').innerText;
+            var productPrice = document.querySelector('.product-info p:nth-of-type(2)').innerText;
+            var productQuantity = document.querySelector('.quantity-input').value;
+            var cartItemList = document.getElementById('cartItemList');
+            var newItem = document.createElement('li');
+            newItem.textContent = `${productName}: ${productPrice} (Quantity: ${productQuantity})`;
+            cartItemList.appendChild(newItem);
+            var cartCount = parseInt(document.querySelector('.cart span').innerText);
+            cartCount += parseInt(productQuantity);
+            document.querySelector('.cart span').innerText = cartCount;
+        }
+
+        // Function to handle checkout
+        function checkout() {
+            alert("Proceed to checkout");
+        }
+
+        // Function to increment quantity
+        function increment() {
+            var input = document.querySelector('.quantity-input');
+            var value = parseInt(input.value);
+            if (value < 10) {
+                input.value = value + 1;
+            }
+        }
+
+        // Function to decrement quantity
+        function decrement() {
+            var input = document.querySelector('.quantity-input');
+            var value = parseInt(input.value);
+            if (value > 1) {
+                input.value = value - 1;
+            }
+        }
+
+        // Function to post comment
+        function postComment() {
+            var commentText = document.getElementById('commentText').value;
+            var commentList = document.getElementById('commentList');
+            var newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.innerHTML = `<p>${commentText}</p>`;
+            commentList.appendChild(newComment);
+            // Clear the comment input
+            document.getElementById('commentText').value = '';
+        }
+
+        // Function to rate the product
+        function rateProduct(rating) {
+            // Implement logic to handle the rating, such as sending it to a server
+            // For now, let's just log the rating to the console
+            console.log("Rated product:", rating);
+        }
+
+        // Function to change the main product image when a thumbnail is clicked
+        function changeImage(newImageSrc) {
+            var mainImage = document.querySelector('.product-image img');
+            mainImage.src = newImageSrc;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Palace X PRX - Shop</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .shop {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Menampilkan dalam 4 kolom */
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+        }
+
+        .product h3 {
+            margin-top: 10px;
+        }
+
+        .product p {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Point Palace </h1>
+        <nav>
+            <ul>
+                <li><a href="menuutama.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- Search bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </header>
+
+    <section class="shop">
+        <h2>Our Products</h2>
+        <div class="products">
+            <div class="product" onclick="goToProductDetail('product1.html')">
+                <img src="jersey23-shop-11.webp" alt="Jersey 23/24">
+                <h3>Jersey 23/24</h3>
+                <p>$69.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product2.html')">
+                <img src="product-pic-tracksuit-back.webp" alt="PRX Dino TrackSuit">
+                <h3>PRX Dino TrackSuit</h3>
+                <p>$99.99</p>
+            </div>
+            <!-- Repeat the following product block for each product -->
+            <!-- Example for product 3 -->
+            <div class="product" onclick="goToProductDetail('product3.html')">
+                <img src="product-pic-tracksuit-pants-2.webp" alt="Product 3">
+                <h3>PRX Dino Tracksuit Pants</h3>
+                <p>$48.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product4.html')">
+                <img src="seoulv2-hoodie-flatlay-front.webp" alt="Product 4">
+                <h3>Seoulv2 Hoddies</h3>
+                <p>$89.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product5.html')">
+                <img src="prx-thaddino-pink-01.webp" alt="Product 5">
+                <h3>PRX Thaddino</h3>
+                <p>$34.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product6.html')">
+                <img src="ProJerseyUpdatedSponsors-JerseyFront.webp" alt="Product 6">
+                <h3>Sen Jersey 23/24</h3>
+                <p>$69.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product7.html')">
+                <img src="SenSociety_BundleImage_BlackHoodieBlackT_74b58442-be73-4d3b-ae0a-2019150f27e1.webp" alt="Product 7">
+                <h3>Kick Off - Black Hoddie</h3>
+                <p>$69.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product8.html')">
+                <img src="GunSkinMerch_flatlays_Shirt.webp" alt="Product 8">
+                <h3>CAPSULE COLLECTION TEE</h3>
+                <p>$25.00</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product9.html')">
+                <img src="JoggersFront.webp" alt="Product 9">
+                <h3>KICK OFF SWEATPANTS</h3>
+                <p>$35.00</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product10.html')">
+                <img src="SenCityBlackTeeBack.webp" alt="Product 10">
+                <h3>Kick Off Tee-Black</h3>
+                <p>$25.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product11.html')">
+                <img src="2024-T1-Uniform-Jersey_600x.webp" alt="Product 11">
+                <h3>2024 T1 Uniform Jersey</h3>
+                <p>$110.99</p>
+            </div>
+            <div class="product" onclick="goToProductDetail('product12.html')">
+                <img src="Logo-Backpack-Front_600x.webp" alt="Product 12">
+                <h3>Backpack T1 </h3>
+                <p>$30.00</p>
+            </div>
+            <!-- End of product block -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Point Palace X PRX. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function goToProductDetail(productUrl) {
+            window.location.href = productUrl;
+        }
+    </script>
+    <!-- Search engine script -->
+    <script>
+        const products = [
+    { name: "Jersey 23/24", imageUrl: "jersey23-shop-11.webp", url: "product1.html" },
+    { name: "PRX Dino TrackSuit", imageUrl: "product-pic-tracksuit-back.webp", url: "product2.html" },
+    { name: "PRX Dino Tracksuit Pants", imageUrl: "product-pic-tracksuit-pants-2.webp", url: "product3.html" },
+    { name: "Seoul V2 Hoodie", imageUrl: "seoulv2-hoodie-flatlay-front.webp", url: "product4.html" },
+    { name: "PRX Thaddino Pink", imageUrl: "prx-thaddino-pink-01.webp", url: "product5.html" },
+    { name: "Pro Jersey Updated Sponsors Jersey", imageUrl: "ProJerseyUpdatedSponsors-JerseyFront.webp", url: "product6.html" },
+    { name: "Sen Society Bundle Black Hoodie Black T", imageUrl: "SenSociety_BundleImage_BlackHoodieBlackT_74b58442-be73-4d3b-ae0a-2019150f27e1.webp", url: "product7.html" },
+    // Tambahkan produk berikutnya di sini
+    { name: "Gun Skin Merch Shirt", imageUrl: "GunSkinMerch_flatlays_Shirt.webp", url: "product8.html" },
+    { name: "Joggers Front", imageUrl: "JoggersFront.webp", url: "product9.html" },
+    { name: "Sen City Black Tee Back", imageUrl: "SenCityBlackTeeBack.webp", url: "product10.html" },
+    { name: "2024 T1 Uniform Jersey", imageUrl: "2024-T1-Uniform-Jersey_600x.webp", url: "product11.html" },
+    { name: "Logo Backpack Front", imageUrl: "Logo-Backpack-Front_600x.webp", url: "product12.html" }
+];
+
+
+        // Ambil elemen input dan hasil pencarian
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        // Tambahkan event listener untuk input
+        searchInput.addEventListener('input', function() {
+            const searchText = searchInput.value.trim().toLowerCase(); // Ambil teks dari input, hilangkan spasi ekstra dan ubah menjadi huruf kecil
+
+            // Hapus hasil pencarian sebelumnya
+            searchResults.innerHTML = '';
+
+            // Jika panjang teks pencarian >= 3, tampilkan hasil pencarian
+            if (searchText.length >= 2) {
+                const matchingProducts = products.filter(product => product.name.toLowerCase().includes(searchText)); // Filter produk yang cocok
+                displaySearchResults(matchingProducts); // Tampilkan hasil pencarian
+            } else {
+                hideSearchResults(); // Sembunyikan hasil pencarian jika panjang teks < 3
+            }
+        });
+
+        // Fungsi untuk menampilkan hasil pencarian
+        function displaySearchResults(results) {
+            // Hapus kelas "hidden" dari hasil pencarian
+            searchResults.style.display = 'block';
+
+            if (results.length > 0) {
+                results.forEach(result => {
+                    const resultElement = document.createElement('div');
+
+                    // Buat elemen gambar (img) dan judul (title)
+                    const imgElement = document.createElement('img');
+                    imgElement.src = result.imageUrl;
+                    imgElement.alt = result.name;
+                    imgElement.style.width = '100px'; // Ukuran gambar disesuaikan
+                    imgElement.style.height = '100px'; // Ukuran gambar disesuaikan
+                    resultElement.appendChild(imgElement);
+
+                    const titleElement = document.createElement('p');
+                    titleElement.textContent = result.name;
+                    resultElement.appendChild(titleElement);
+
+                    // Tambahkan event listener untuk navigasi ke URL ketika elemen hasil pencarian diklik
+                    resultElement.addEventListener('click', () => {
+                        window.location.href = result.url; // Buka URL terkait
+                    });
+
+                    resultElement.classList.add('search-results-item');
+                    searchResults.appendChild(resultElement);
+                });
+            } else {
+                const noResultsElement = document.createElement('div');
+                noResultsElement.textContent = 'No matching products found.';
+                searchResults.appendChild(noResultsElement);
+            }
+        }
+
+        // Fungsi untuk menyembunyikan hasil pencarian
+        function hideSearchResults() {
+            searchResults.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
